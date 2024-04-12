@@ -58,7 +58,7 @@ class StreamingApp @Inject() (
     source.print()
     adapterDs.print()
     source.executionEnvironment
-   // adapterDs.executionEnvironment
+    adapterDs.executionEnvironment
   }
 
   def run(params: Params): Unit = {

@@ -10,7 +10,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <flink.version>1.16.0</flink.version>
+        <flink.version>1.19.0</flink.version>
         <scala.binary.version>2.12</scala.binary.version>
         <scala.version>2.12.15</scala.version>
         <scopt.version>4.0.1</scopt.version>
@@ -18,6 +18,7 @@
         <fastjson.version>1.2.76</fastjson.version>
         <nscala-time.version>2.28.0</nscala-time.version>
         <config.version>1.4.0</config.version>
+        <flink-connector-kafka.version>3.1.0-1.18</flink-connector-kafka.version>
         <scala-maven-plugin.version>3.2.0</scala-maven-plugin.version>
         <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
     </properties>
@@ -27,17 +28,23 @@
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-streaming-scala_${scala.binary.version}</artifactId>
             <version>${flink.version}</version>
-<!--            <scope>provided</scope>-->
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-base</artifactId>
+            <version>${flink.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-kafka</artifactId>
-            <version>${flink.version}</version>
+            <version>${flink-connector-kafka.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-clients</artifactId>
             <version>${flink.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.google.inject</groupId>

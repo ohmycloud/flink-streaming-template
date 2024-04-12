@@ -12,17 +12,17 @@ object AdapterImpl extends Adapter {
       if (null != d) {
         try {
           // 存放 JSON 中的 key, value 键值对儿
-          val chargingPileDataMap = new mutable.HashMap[String,String]()
-          val chargingPileData: JSONObject = JSON.parseObject(d)
-          chargingPileData.keySet().toArray.foreach( f => {
+          val map = new mutable.HashMap[String,String]()
+          val jsonData: JSONObject = JSON.parseObject(d)
+          jsonData.keySet().toArray.foreach( f => {
             val field: String = f.toString
-            val value: String = chargingPileData.getString(field)
+            val value: String = jsonData.getString(field)
             if ("" != value && "" != field) {
-              chargingPileDataMap.put(field, chargingPileData.getString(field))
+              map.put(field, jsonData.getString(field))
             }
           })
-          if (chargingPileDataMap.nonEmpty) {
-            chargingPileDataMap.toMap
+          if (map.nonEmpty) {
+            map.toMap
           } else {
             Map("" -> "")
           }
