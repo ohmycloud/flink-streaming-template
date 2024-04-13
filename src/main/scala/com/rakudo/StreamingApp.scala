@@ -32,16 +32,16 @@ object StreamingApp extends App {
       val injector = Guice.createInjector(MainModule)
       val runner = injector.getInstance(classOf[StreamingApp])
       ConfigFactory.invalidateCaches()
-      //runner.run(params)
+      runner.run(params)
     case _ => sys.exit(1)
   }
 
   val params = ParameterTool.fromArgs(args)
   val input: String = params.get("interval")
   val partition: String = params.get("partition")
-  println(input, partition)
+  println(s"input=$input, partition=$partition")
 
-  case class Params(interval: String = "", partition: String = "")
+  case class Params(interval: String = "2", partition: String = "1")
 }
 
 @Singleton
